@@ -235,19 +235,14 @@ public:
 
 struct Week : public Day
 {
-private:
-    Day arWeek[7];
-
 public:
-
+    Day arWeek[7];
 };
 
 struct Month : public Week
 {
-private:
-    Day arMonth[31];
 public:
-
+    Day arMonth[31];
 };
 
 class Budget : public Fabrica
@@ -259,7 +254,6 @@ private:
     vector <Product*> _debitCards;
     vector<Product*> _wallets;
    
-
 public:
     void setExpenses()
     {
@@ -418,6 +412,10 @@ public:
     {
         double value;
         string tmp;
+        int date;
+
+        cout << "Enter date (1-31)" << endl;
+        cin >> date;
 
         cout << "how much did you spend?" << endl;
         cin >> value;
@@ -433,7 +431,8 @@ public:
                 it->Withdrawals(value);
         }
 
-        month.PlusSummaOfCategory(value);
+        month.arMonth[date - 1].PlusSummaOfCategory(value);
+        
     }
     
 };
