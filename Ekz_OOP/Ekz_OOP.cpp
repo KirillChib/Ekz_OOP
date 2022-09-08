@@ -131,7 +131,7 @@ struct Wallet : public Product
     {
         return _howManyMoney;
     }
-    virtual void Refill() override
+    virtual void Refill() override 
     {
         double value;
 
@@ -139,8 +139,8 @@ struct Wallet : public Product
         cin >> value;
 
         _howManyMoney += value;
-    }
-    virtual void Withdrawals(double value) override
+    } 
+    virtual void Withdrawals(double value) override 
     {
         if (value > _howManyMoney)
             cout << "not enough funds" << endl;
@@ -196,10 +196,15 @@ struct Day
 {
 private:
     int date{ 0 };
-    Category category;
     vector <Category> _categories;
 
 public:
+    Category category;
+
+    int getDate()
+    {
+        return date;
+    }
     void AddNewCategory()
     {
         category.setName();
@@ -208,14 +213,14 @@ public:
     }
     void PlusSummaOfCategory(double val)
     {
-        if (_categories.empty())
+        if (!_categories.empty())
         {
             cout << "No categories" << endl;
             return;
         }
         string tmp;
         int current{0};
-        do {
+        
             cout << "Enter category" << endl;
             cin.ignore();
             getline(cin, tmp);
@@ -225,11 +230,19 @@ public:
                 if (it.getName().compare(tmp) == 0)
                 {
                     it.PlusSumma(val);
-                    current = 1;
+                    current ++;
                     break;
                 }
             }
-        } while (current != 1);
+       
+    }
+    void PrintCategories()
+    {
+        for (auto it : _categories)
+        {
+            cout <<"Category : "<< it.getName() << endl;
+            cout << it.getSumma() << " rub" << endl;
+        }
     }
 };
 
@@ -370,6 +383,10 @@ public:
     {
         double value;
         string tmp;
+        int date;
+
+        cout << "Enter date (1-31)" << endl;
+        cin >> date;
 
         cout << "how much did you spend?" << endl;
         cin >> value;
@@ -385,30 +402,10 @@ public:
                 it->Withdrawals(value);
         }
 
-        month.PlusSummaOfCategory(value);
+        month.arMonth[date - 1].PlusSummaOfCategory(value);
+        month.arWeek[date - 1].PlusSummaOfCategory(value);
     }
     void PaymentDebitCard()
-    {
-        double value;
-        string tmp;
-
-        cout << "how much did you spend?" << endl;
-        cin >> value;
-
-
-        cout << "Which card to use?" << endl;
-        cin.ignore();
-        getline(cin, tmp);
-
-        for (auto it : _debitCards)
-        {
-            if (it->getName().compare(tmp) == 0)
-                it->Withdrawals(value);
-        }
-
-        month.PlusSummaOfCategory(value);
-    }
-    void PaymentWallet()
     {
         double value;
         string tmp;
@@ -425,6 +422,32 @@ public:
         cin.ignore();
         getline(cin, tmp);
 
+        for (auto it : _debitCards)
+        {
+            if (it->getName().compare(tmp) == 0)
+                it->Withdrawals(value);
+        }
+
+        month.arMonth[date - 1].PlusSummaOfCategory(value);
+        month.arWeek[date - 1].PlusSummaOfCategory(value);
+    }
+    void PaymentWallet()
+    {
+        double value;
+        string tmp;
+        int date;
+
+        cout << "Enter date (1-31)" << endl;
+        cin >> date;
+
+        cout << "how much did you spend?" << endl;
+        cin >> value;
+
+
+        cout << "Which wallet to use?" << endl;
+        cin.ignore();
+        getline(cin, tmp);
+
         for (auto it : _wallets)
         {
             if (it->getName().compare(tmp) == 0)
@@ -432,14 +455,234 @@ public:
         }
 
         month.arMonth[date - 1].PlusSummaOfCategory(value);
-        
+        month.arWeek[date - 1].PlusSummaOfCategory(value);
     }
-    
+    void PrintInfoCategories()
+    {
+        int choice;
+        int day;
+
+        cout << "1.Show day" << endl << "2.Show week" << endl << "3.Show month" << endl;
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            cout << "Enter day (1-31)" << endl;
+            cin >> day;
+
+            system("cls");
+
+            month.arMonth[day - 1].PrintCategories();
+            break;
+        case 2:
+            for (auto i = 0; i < 7; i++)
+            {
+               
+                if (month.arWeek[i].getDate() == 0)
+                {
+                    while (month.arWeek[i].getDate() != 0)
+                        i++;
+                }
+
+                cout << "Day " << i + 1;
+                month.arWeek[i].PrintCategories();
+            }
+            break;
+        case 3:
+            for (auto i = 0; i < 31; i++)
+            {
+                cout << "Day " << i + 1;
+                if (month.arMonth[i].getDate() == 0)
+                {
+                    while (month.arMonth[i].getDate() != 0)
+                        i++;
+                }
+                month.arMonth[i].PrintCategories();
+            }
+            break;
+            }
+        }
+    void RatingCategories()
+    {
+        Category cat, cat1, cat2;
+        vector <Category> list;
+
+        for (auto i = 0; i < 31; i++)
+        {
+            if (month.arMonth[i].getDate() == 0)
+                i++;
+
+            if (month.arMonth[i].category.getSumma() > month.arMonth[i + 1].category.getSumma())
+                cat = month.arMonth[i].category;
+            else
+            {
+                cat = month.arMonth[i + 1].category;
+            }
+        }
+        list.push_back(cat);
+
+        for (auto i = 0; i < 31; i++)
+        {
+            if (month.arMonth[i].category.getName().compare(cat.getName()) == 0)
+                i++;
+
+            if (month.arMonth[i].category.getSumma() > month.arMonth[i + 1].category.getSumma())
+                cat1 = month.arMonth[i].category;
+
+            else
+            {
+                cat1 = month.arMonth[i + 1].category;
+            }
+        }
+        list.push_back(cat1);
+
+        for (auto i = 0; i < 31; i++)
+        {
+            if (month.arMonth[i].category.getName().compare(cat.getName()) == 0 || month.arMonth[i].category.getName().compare(cat1.getName()) == 0)
+                i++;
+
+            if (month.arMonth[i].category.getSumma() > month.arMonth[i + 1].category.getSumma())
+                cat2 = month.arMonth[i].category;
+
+            else
+            {
+                cat2 = month.arMonth[i + 1].category;
+            }
+        }
+        list.push_back(cat2);
+
+        for (auto it : list)
+        {
+            cout <<endl<< "Category : " << it.getName() << endl;
+            cout << "Summa : " << it.getSumma() << " rub" << endl;
+        }
+
+    }
+    void Rating()
+    {
+
+    }
+    void Menu()
+    {
+        int choice;
+        int tmp;
+        do {
+            cout << "1.Create  card or wallet" << endl;
+            cout << "2.Show cards and wallet" << endl;
+            cout << "3.Plus money on cards or wallet" << endl;
+            cout << "4.Create category of expenses" << endl;
+            cout << "5.Spend money" << endl;
+            cout << "6.Show categories" << endl;
+            cout << "7.Rating categories" << endl;
+            cout << "0.Exit" << endl;
+
+            cin >> choice;
+            switch (choice)
+            {
+            case 1:
+                system("cls");
+                cout << "1.Create credit card" << endl;
+                cout << "2.Create debit card" << endl;
+                cout << "3.Ceate wallet" << endl;
+
+                cin >> tmp;
+                switch (tmp)
+                {
+                case 1:
+                    CreateNewCreditCard();
+                    break;
+                case 2:
+                    CreateNewDibitCard();
+                    break;
+                case 3:
+                    CreateNewWallet();
+                    break;
+                }
+                break;
+            case 2:
+                system("cls");
+                cout << "1.Show credit cards" << endl;
+                cout << "2.Show debit cards" << endl;
+                cout << "3.Show wallets" << endl;
+
+                cin >> tmp;
+
+                switch (tmp)
+                {
+                case 1:
+                    PrintCreditCards();
+                    break;
+                case 2:
+                    PrintDebitCards();
+                    break;
+                case 3:
+                    PrintWallets();
+                    break;
+                }
+                break;
+            case 3:
+                system("cls");
+                cout << "1.Plus money on credits card" << endl;
+                cout << "2.Plus money on debit card" << endl;
+                cout << "3.Plus money on wallet" << endl;
+
+                cin >> tmp;
+                switch (tmp)
+                {
+                case 1:
+                    AddMoneyOnCreditCard();
+                    break;
+                case 2:
+                    AddMoneyOnDebitCard();
+                    break;
+                case 3:
+                    AddMoneyOnWallet();
+                    break;
+                }
+                break;
+            case 4:
+                system("cls");
+                month.AddNewCategory();
+                break;
+            case 5:
+                system("cls");
+                cout << "1.From credit card" << endl;
+                cout << "2.From debit card" << endl;
+                cout << "3.From wallet" << endl;
+
+                cin >> tmp;
+                    switch (tmp)
+                    {
+                    case 1:
+                        PaymentCreditCard();
+                        break;
+                    case 2:
+                        PaymentDebitCard();
+                        break;
+                    case 3:
+                        PaymentWallet();
+                        break;
+                    }
+                    break;
+            case 6:
+                system("cls");
+                PrintInfoCategories();
+                break;
+            case 7:
+                system("cls");
+                RatingCategories();
+                break;
+            }
+        } while (choice != 0);
+    }
 };
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    Budget b;
+    b.Menu();
+   
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
