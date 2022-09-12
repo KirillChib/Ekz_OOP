@@ -127,7 +127,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Budget.cpp" />
+    <ClCompile Include="Category.cpp" />
+    <ClCompile Include="CreditCard.cpp" />
+    <ClCompile Include="Date.cpp" />
+    <ClCompile Include="DebitCard.cpp" />
     <ClCompile Include="Ekz_OOP.cpp" />
+    <ClCompile Include="Fabrica.cpp" />
+    <ClCompile Include="ListOfCategories.cpp" />
+    <ClCompile Include="Product.cpp" />
+    <ClCompile Include="Wallet.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Budget.h" />
+    <ClInclude Include="Category.h" />
+    <ClInclude Include="CreditCard.h" />
+    <ClInclude Include="Date.h" />
+    <ClInclude Include="DebitCard.h" />
+    <ClInclude Include="Fabrica.h" />
+    <ClInclude Include="ListOfCategories.h" />
+    <ClInclude Include="Product.h" />
+    <ClInclude Include="Wallet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

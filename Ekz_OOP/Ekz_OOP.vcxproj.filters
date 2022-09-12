@@ -13,10 +13,120 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Исходные файлы\Budget">
+      <UniqueIdentifier>{a7af11f7-9c2d-41e8-b983-aeba40342a96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Category">
+      <UniqueIdentifier>{afce1c4c-b11c-4adb-b2df-4b8868edecf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\CreditCard">
+      <UniqueIdentifier>{badda086-de11-4c25-a9dc-1708c5420f59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Date">
+      <UniqueIdentifier>{168699a5-a3ca-428c-9054-0125f0403e77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\DebitCard">
+      <UniqueIdentifier>{41ca63fc-2d26-47fb-b177-d590b52bac00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Fabrica">
+      <UniqueIdentifier>{37952092-ff20-4a56-900f-f916cbac467b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\ListOfCategories">
+      <UniqueIdentifier>{1a5fbc92-284e-48b8-aacb-0e560930a67b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Product">
+      <UniqueIdentifier>{76513618-a1b4-413f-9b91-0632954c39cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Wallet">
+      <UniqueIdentifier>{968cf233-f8ca-4f51-be8f-8c5d16d1d16d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Budget">
+      <UniqueIdentifier>{a1c09a67-ec05-424e-b6dd-6c60073a1489}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Category">
+      <UniqueIdentifier>{58b3d922-8fab-4e3b-a62f-8aae75279782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\CreditCard">
+      <UniqueIdentifier>{bd9f5a9f-1004-410e-a0ba-428e94670919}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Date">
+      <UniqueIdentifier>{6e167252-e114-437a-b66c-aff86808bb96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\DebitCard">
+      <UniqueIdentifier>{18710e53-135d-49e1-acff-0db822152997}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Fabrica">
+      <UniqueIdentifier>{62bd5b06-204a-41fd-9fbc-608b94692a08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\ListOfCategories">
+      <UniqueIdentifier>{52ab6a53-0c74-4e30-9fe2-129067853b23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Product">
+      <UniqueIdentifier>{a793bb92-8c9f-436f-be00-747477cd1aaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Wallet">
+      <UniqueIdentifier>{0262f7f8-aa30-4706-a726-4a2f1576ccf9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ekz_OOP.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Budget.cpp">
+      <Filter>Исходные файлы\Budget</Filter>
+    </ClCompile>
+    <ClCompile Include="Category.cpp">
+      <Filter>Исходные файлы\Category</Filter>
+    </ClCompile>
+    <ClCompile Include="CreditCard.cpp">
+      <Filter>Исходные файлы\CreditCard</Filter>
+    </ClCompile>
+    <ClCompile Include="Date.cpp">
+      <Filter>Исходные файлы\Date</Filter>
+    </ClCompile>
+    <ClCompile Include="DebitCard.cpp">
+      <Filter>Исходные файлы\DebitCard</Filter>
+    </ClCompile>
+    <ClCompile Include="Fabrica.cpp">
+      <Filter>Исходные файлы\Fabrica</Filter>
+    </ClCompile>
+    <ClCompile Include="ListOfCategories.cpp">
+      <Filter>Исходные файлы\ListOfCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="Product.cpp">
+      <Filter>Исходные файлы\Product</Filter>
+    </ClCompile>
+    <ClCompile Include="Wallet.cpp">
+      <Filter>Исходные файлы\Wallet</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Budget.h">
+      <Filter>Файлы заголовков\Budget</Filter>
+    </ClInclude>
+    <ClInclude Include="Category.h">
+      <Filter>Файлы заголовков\Category</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditCard.h">
+      <Filter>Файлы заголовков\CreditCard</Filter>
+    </ClInclude>
+    <ClInclude Include="Date.h">
+      <Filter>Файлы заголовков\Date</Filter>
+    </ClInclude>
+    <ClInclude Include="DebitCard.h">
+      <Filter>Файлы заголовков\DebitCard</Filter>
+    </ClInclude>
+    <ClInclude Include="Fabrica.h">
+      <Filter>Файлы заголовков\Fabrica</Filter>
+    </ClInclude>
+    <ClInclude Include="ListOfCategories.h">
+      <Filter>Файлы заголовков\ListOfCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="Product.h">
+      <Filter>Файлы заголовков\Product</Filter>
+    </ClInclude>
+    <ClInclude Include="Wallet.h">
+      <Filter>Файлы заголовков\Wallet</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
