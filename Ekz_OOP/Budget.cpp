@@ -334,7 +334,22 @@ void Budget::Menu()
             break;
         case 6:
             system("cls");
+            cout << "1.Rating for week" << endl;
+            cout << "2.Rating for month" << endl;
 
+            cin >> tmp;
+
+            switch (tmp)
+            {
+            case 1:
+                date.RatingOfWeek();
+
+                break;
+            case 2:
+                date.RatingOfMonth();
+
+                break;
+            }
             break;
        
         }
